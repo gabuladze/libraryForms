@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace LibraryForms
 {
-    public partial class LoginForm : Form
+    public partial class StudentForm : Form
     {
-        StudentForm StudentForm;
-
-        public LoginForm()
+        public StudentForm()
         {
             InitializeComponent();
-            this.StudentForm = new StudentForm();
-        }
-
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            StudentForm.Show();
         }
     }
 }
