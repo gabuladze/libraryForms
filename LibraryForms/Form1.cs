@@ -13,6 +13,7 @@ namespace LibraryForms
     public partial class LoginForm : Form
     {
         StudentForm StudentForm;
+        LibraryDBDataContext LibraryDB = new LibraryDBDataContext();
 
         public LoginForm()
         {
@@ -22,6 +23,7 @@ namespace LibraryForms
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            // compare textbox values to db
             StudentForm.Show();
         }
     }
