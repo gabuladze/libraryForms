@@ -14,39 +14,73 @@ namespace LibraryForms
     {
         LibraryDBDataContext LibraryDB = new LibraryDBDataContext();
         StudentForm StudentForm;
+        LibrarianForm LibrarianForm;
         User currentUser;
 
         public LoginForm()
         {
             InitializeComponent();
-            this.StudentForm = new StudentForm();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            if (this.tryLogin())
+            {
+                this.openDashboard();
+            }
+        }
+
+        private bool tryLogin()
+        {
             // compare textbox values to db
-            try { 
-                currentUser = (
+            try
+            {
+                this.currentUser = (
                     from u in LibraryDB.users
                     where u.email == emailTextBox.Text && u.password == passwordTextBox.Text
-                    select new User {
-                        id = u.id, 
-                        first_name = u.first_name, 
-                        last_name = u.last_name, 
-                        email = u.email
+                    select new User
+                    {
+                        id = u.id,
+                        first_name = u.first_name,
+                        last_name = u.last_name,
+                        email = u.email ,
+                        role = u.role
                     }).First();
+                return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                // use ^ that ex var maybe??
                 MessageBox.Show("Invalid Credentials!");
+                return false;
             }
-            // Check if user exists
+        }
 
-            if (currentUser != null)
+        private void openDashboard()
+        {
+            // check for role
+            switch (this.currentUser.role)
             {
-                MessageBox.Show(currentUser.GetType().ToString());
-                StudentForm.Show();
+                case "USER":
+                    this.StudentForm = new StudentForm();
+                    this.StudentForm.Show();
+                    break;
+                case "LIBRARIAN":
+                    this.LibrarianForm = new LibrarianForm();
+                    this.LibrarianForm.Show();
+                    break;
+                default:
+                    break;
             }
+            // reset input values, duh
+            this.resetInputValues();
+
+        }
+
+        private void resetInputValues()
+        {
+            emailTextBox.Text = "";
+            passwordTextBox.Text = "";
         }
     }
 }
