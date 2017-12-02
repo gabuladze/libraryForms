@@ -35,5 +35,17 @@ public class User
 		set;
 	}
 
+	public virtual string email
+	{
+		get;
+		set;
+	}
+
+	public virtual string password
+	{
+		get;
+		set;
+	}
+
 }
 

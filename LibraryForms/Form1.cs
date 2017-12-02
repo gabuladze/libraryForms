@@ -24,6 +24,11 @@ namespace LibraryForms
         private void loginButton_Click(object sender, EventArgs e)
         {
             // compare textbox values to db
+            IQueryable<User> user =
+                from u in LibraryDB.users
+                where u.email == emailTextBox.Text && u.password == passwordTextBox.Text
+                select u;
+            
             StudentForm.Show();
         }
     }
