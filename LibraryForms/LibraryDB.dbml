@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="librarydb" Class="LibraryDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=THINKCENTRE\SQLEXPRESS;Initial Catalog=librarydb;Integrated Security=True" SettingsObjectName="LibraryForms.Properties.Settings" SettingsPropertyName="librarydbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.authors" Member="authors">
+    <Type Name="author">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Association Name="author_lendable" Member="lendables" ThisKey="id" OtherKey="author_id" Type="lendable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="role" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="user_lendable_user" Member="lendable_users" ThisKey="id" OtherKey="user_id" Type="lendable_user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.categories" Member="categories">
+    <Type Name="category">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="display_name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="category_lendable" Member="lendables" ThisKey="id" OtherKey="category_id" Type="lendable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.genres" Member="genres">
+    <Type Name="genre">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="display_name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="genre_lendable" Member="lendables" ThisKey="id" OtherKey="genre_id" Type="lendable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lendable_user" Member="lendable_users">
+    <Type Name="lendable_user">
+      <Column Name="lendable_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="user_lendable_user" Member="user" ThisKey="user_id" OtherKey="id" Type="user" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="lendable_lendable_user" Member="lendable" ThisKey="lendable_id" OtherKey="id" Type="lendable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lendables" Member="lendables">
+    <Type Name="lendable">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="slug" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="display_name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="author_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="genre_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="lendable_lendable_user" Member="lendable_users" ThisKey="id" OtherKey="lendable_id" Type="lendable_user" />
+      <Association Name="author_lendable" Member="author" ThisKey="author_id" OtherKey="id" Type="author" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="category_lendable" Member="category" ThisKey="category_id" OtherKey="id" Type="category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="genre_lendable" Member="genre" ThisKey="genre_id" OtherKey="id" Type="genre" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
