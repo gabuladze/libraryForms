@@ -12,8 +12,9 @@ namespace LibraryForms
 {
     public partial class LoginForm : Form
     {
-        StudentForm StudentForm;
         LibraryDBDataContext LibraryDB = new LibraryDBDataContext();
+        StudentForm StudentForm;
+        User currentUser;
 
         public LoginForm()
         {
@@ -24,12 +25,28 @@ namespace LibraryForms
         private void loginButton_Click(object sender, EventArgs e)
         {
             // compare textbox values to db
-            IQueryable<User> user =
-                from u in LibraryDB.users
-                where u.email == emailTextBox.Text && u.password == passwordTextBox.Text
-                select u;
-            
-            StudentForm.Show();
+            try { 
+                currentUser = (
+                    from u in LibraryDB.users
+                    where u.email == emailTextBox.Text && u.password == passwordTextBox.Text
+                    select new User {
+                        id = u.id, 
+                        first_name = u.first_name, 
+                        last_name = u.last_name, 
+                        email = u.email
+                    }).First();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Invalid Credentials!");
+            }
+            // Check if user exists
+
+            if (currentUser != null)
+            {
+                MessageBox.Show(currentUser.GetType().ToString());
+                StudentForm.Show();
+            }
         }
     }
 }
