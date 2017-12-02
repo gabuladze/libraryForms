@@ -32,19 +32,15 @@ namespace LibraryForms {
         
         private genresDataTable tablegenres;
         
-        private lendable_userDataTable tablelendable_user;
-        
         private lendablesDataTable tablelendables;
-        
-        private global::System.Data.DataRelation relationFK_lendable_user_lendables;
-        
-        private global::System.Data.DataRelation relationFK_lendable_user_users;
         
         private global::System.Data.DataRelation relationFK_lendables_authors;
         
         private global::System.Data.DataRelation relationFK_lendables_categories;
         
         private global::System.Data.DataRelation relationFK_lendables_genres;
+        
+        private global::System.Data.DataRelation relationFK_lendables_users;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -85,9 +81,6 @@ namespace LibraryForms {
                 }
                 if ((ds.Tables["genres"] != null)) {
                     base.Tables.Add(new genresDataTable(ds.Tables["genres"]));
-                }
-                if ((ds.Tables["lendable_user"] != null)) {
-                    base.Tables.Add(new lendable_userDataTable(ds.Tables["lendable_user"]));
                 }
                 if ((ds.Tables["lendables"] != null)) {
                     base.Tables.Add(new lendablesDataTable(ds.Tables["lendables"]));
@@ -147,16 +140,6 @@ namespace LibraryForms {
         public genresDataTable genres {
             get {
                 return this.tablegenres;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public lendable_userDataTable lendable_user {
-            get {
-                return this.tablelendable_user;
             }
         }
         
@@ -249,9 +232,6 @@ namespace LibraryForms {
                 if ((ds.Tables["genres"] != null)) {
                     base.Tables.Add(new genresDataTable(ds.Tables["genres"]));
                 }
-                if ((ds.Tables["lendable_user"] != null)) {
-                    base.Tables.Add(new lendable_userDataTable(ds.Tables["lendable_user"]));
-                }
                 if ((ds.Tables["lendables"] != null)) {
                     base.Tables.Add(new lendablesDataTable(ds.Tables["lendables"]));
                 }
@@ -312,23 +292,16 @@ namespace LibraryForms {
                     this.tablegenres.InitVars();
                 }
             }
-            this.tablelendable_user = ((lendable_userDataTable)(base.Tables["lendable_user"]));
-            if ((initTable == true)) {
-                if ((this.tablelendable_user != null)) {
-                    this.tablelendable_user.InitVars();
-                }
-            }
             this.tablelendables = ((lendablesDataTable)(base.Tables["lendables"]));
             if ((initTable == true)) {
                 if ((this.tablelendables != null)) {
                     this.tablelendables.InitVars();
                 }
             }
-            this.relationFK_lendable_user_lendables = this.Relations["FK_lendable_user_lendables"];
-            this.relationFK_lendable_user_users = this.Relations["FK_lendable_user_users"];
             this.relationFK_lendables_authors = this.Relations["FK_lendables_authors"];
             this.relationFK_lendables_categories = this.Relations["FK_lendables_categories"];
             this.relationFK_lendables_genres = this.Relations["FK_lendables_genres"];
+            this.relationFK_lendables_users = this.Relations["FK_lendables_users"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -347,18 +320,8 @@ namespace LibraryForms {
             base.Tables.Add(this.tablecategories);
             this.tablegenres = new genresDataTable();
             base.Tables.Add(this.tablegenres);
-            this.tablelendable_user = new lendable_userDataTable();
-            base.Tables.Add(this.tablelendable_user);
             this.tablelendables = new lendablesDataTable();
             base.Tables.Add(this.tablelendables);
-            this.relationFK_lendable_user_lendables = new global::System.Data.DataRelation("FK_lendable_user_lendables", new global::System.Data.DataColumn[] {
-                        this.tablelendables.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablelendable_user.lendable_idColumn}, false);
-            this.Relations.Add(this.relationFK_lendable_user_lendables);
-            this.relationFK_lendable_user_users = new global::System.Data.DataRelation("FK_lendable_user_users", new global::System.Data.DataColumn[] {
-                        this.tableusers.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablelendable_user.user_idColumn}, false);
-            this.Relations.Add(this.relationFK_lendable_user_users);
             this.relationFK_lendables_authors = new global::System.Data.DataRelation("FK_lendables_authors", new global::System.Data.DataColumn[] {
                         this.tableauthors.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablelendables.author_idColumn}, false);
@@ -371,6 +334,10 @@ namespace LibraryForms {
                         this.tablegenres.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablelendables.genre_idColumn}, false);
             this.Relations.Add(this.relationFK_lendables_genres);
+            this.relationFK_lendables_users = new global::System.Data.DataRelation("FK_lendables_users", new global::System.Data.DataColumn[] {
+                        this.tableusers.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablelendables.user_idColumn}, false);
+            this.Relations.Add(this.relationFK_lendables_users);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -394,12 +361,6 @@ namespace LibraryForms {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializegenres() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializelendable_user() {
             return false;
         }
         
@@ -475,9 +436,6 @@ namespace LibraryForms {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void genresRowChangeEventHandler(object sender, genresRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void lendable_userRowChangeEventHandler(object sender, lendable_userRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void lendablesRowChangeEventHandler(object sender, lendablesRowChangeEvent e);
@@ -1711,275 +1669,6 @@ namespace LibraryForms {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class lendable_userDataTable : global::System.Data.TypedTableBase<lendable_userRow> {
-            
-            private global::System.Data.DataColumn columnlendable_id;
-            
-            private global::System.Data.DataColumn columnuser_id;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userDataTable() {
-                this.TableName = "lendable_user";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal lendable_userDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected lendable_userDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn lendable_idColumn {
-                get {
-                    return this.columnlendable_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn user_idColumn {
-                get {
-                    return this.columnuser_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow this[int index] {
-                get {
-                    return ((lendable_userRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event lendable_userRowChangeEventHandler lendable_userRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event lendable_userRowChangeEventHandler lendable_userRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event lendable_userRowChangeEventHandler lendable_userRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event lendable_userRowChangeEventHandler lendable_userRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Addlendable_userRow(lendable_userRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow Addlendable_userRow(lendablesRow parentlendablesRowByFK_lendable_user_lendables, usersRow parentusersRowByFK_lendable_user_users) {
-                lendable_userRow rowlendable_userRow = ((lendable_userRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null};
-                if ((parentlendablesRowByFK_lendable_user_lendables != null)) {
-                    columnValuesArray[0] = parentlendablesRowByFK_lendable_user_lendables[0];
-                }
-                if ((parentusersRowByFK_lendable_user_users != null)) {
-                    columnValuesArray[1] = parentusersRowByFK_lendable_user_users[0];
-                }
-                rowlendable_userRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowlendable_userRow);
-                return rowlendable_userRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                lendable_userDataTable cln = ((lendable_userDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new lendable_userDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnlendable_id = base.Columns["lendable_id"];
-                this.columnuser_id = base.Columns["user_id"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnlendable_id = new global::System.Data.DataColumn("lendable_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnlendable_id);
-                this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnuser_id);
-                this.columnlendable_id.AllowDBNull = false;
-                this.columnuser_id.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow Newlendable_userRow() {
-                return ((lendable_userRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new lendable_userRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(lendable_userRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.lendable_userRowChanged != null)) {
-                    this.lendable_userRowChanged(this, new lendable_userRowChangeEvent(((lendable_userRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.lendable_userRowChanging != null)) {
-                    this.lendable_userRowChanging(this, new lendable_userRowChangeEvent(((lendable_userRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.lendable_userRowDeleted != null)) {
-                    this.lendable_userRowDeleted(this, new lendable_userRowChangeEvent(((lendable_userRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.lendable_userRowDeleting != null)) {
-                    this.lendable_userRowDeleting(this, new lendable_userRowChangeEvent(((lendable_userRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removelendable_userRow(lendable_userRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                librarydbDataSet ds = new librarydbDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "lendable_userDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class lendablesDataTable : global::System.Data.TypedTableBase<lendablesRow> {
             
             private global::System.Data.DataColumn columnid;
@@ -1993,6 +1682,8 @@ namespace LibraryForms {
             private global::System.Data.DataColumn columncategory_id;
             
             private global::System.Data.DataColumn columngenre_id;
+            
+            private global::System.Data.DataColumn columnuser_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2077,6 +1768,14 @@ namespace LibraryForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn user_idColumn {
+                get {
+                    return this.columnuser_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2112,12 +1811,13 @@ namespace LibraryForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendablesRow AddlendablesRow(string slug, string display_name, authorsRow parentauthorsRowByFK_lendables_authors, categoriesRow parentcategoriesRowByFK_lendables_categories, genresRow parentgenresRowByFK_lendables_genres) {
+            public lendablesRow AddlendablesRow(string slug, string display_name, authorsRow parentauthorsRowByFK_lendables_authors, categoriesRow parentcategoriesRowByFK_lendables_categories, genresRow parentgenresRowByFK_lendables_genres, usersRow parentusersRowByFK_lendables_users) {
                 lendablesRow rowlendablesRow = ((lendablesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         slug,
                         display_name,
+                        null,
                         null,
                         null,
                         null};
@@ -2129,6 +1829,9 @@ namespace LibraryForms {
                 }
                 if ((parentgenresRowByFK_lendables_genres != null)) {
                     columnValuesArray[5] = parentgenresRowByFK_lendables_genres[0];
+                }
+                if ((parentusersRowByFK_lendables_users != null)) {
+                    columnValuesArray[6] = parentusersRowByFK_lendables_users[0];
                 }
                 rowlendablesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlendablesRow);
@@ -2165,6 +1868,7 @@ namespace LibraryForms {
                 this.columnauthor_id = base.Columns["author_id"];
                 this.columncategory_id = base.Columns["category_id"];
                 this.columngenre_id = base.Columns["genre_id"];
+                this.columnuser_id = base.Columns["user_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2182,6 +1886,8 @@ namespace LibraryForms {
                 base.Columns.Add(this.columncategory_id);
                 this.columngenre_id = new global::System.Data.DataColumn("genre_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngenre_id);
+                this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuser_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -2464,12 +2170,12 @@ namespace LibraryForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow[] Getlendable_userRows() {
-                if ((this.Table.ChildRelations["FK_lendable_user_users"] == null)) {
-                    return new lendable_userRow[0];
+            public lendablesRow[] GetlendablesRows() {
+                if ((this.Table.ChildRelations["FK_lendables_users"] == null)) {
+                    return new lendablesRow[0];
                 }
                 else {
-                    return ((lendable_userRow[])(base.GetChildRows(this.Table.ChildRelations["FK_lendable_user_users"])));
+                    return ((lendablesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_lendables_users"])));
                 }
             }
         }
@@ -2595,65 +2301,6 @@ namespace LibraryForms {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class lendable_userRow : global::System.Data.DataRow {
-            
-            private lendable_userDataTable tablelendable_user;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal lendable_userRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablelendable_user = ((lendable_userDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int lendable_id {
-                get {
-                    return ((int)(this[this.tablelendable_user.lendable_idColumn]));
-                }
-                set {
-                    this[this.tablelendable_user.lendable_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int user_id {
-                get {
-                    return ((int)(this[this.tablelendable_user.user_idColumn]));
-                }
-                set {
-                    this[this.tablelendable_user.user_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendablesRow lendablesRow {
-                get {
-                    return ((lendablesRow)(this.GetParentRow(this.Table.ParentRelations["FK_lendable_user_lendables"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_lendable_user_lendables"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usersRow usersRow {
-                get {
-                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK_lendable_user_users"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_lendable_user_users"]);
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class lendablesRow : global::System.Data.DataRow {
             
             private lendablesDataTable tablelendables;
@@ -2733,6 +2380,22 @@ namespace LibraryForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int user_id {
+                get {
+                    try {
+                        return ((int)(this[this.tablelendables.user_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'user_id\' in table \'lendables\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelendables.user_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public authorsRow authorsRow {
                 get {
                     return ((authorsRow)(this.GetParentRow(this.Table.ParentRelations["FK_lendables_authors"])));
@@ -2766,13 +2429,25 @@ namespace LibraryForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow[] Getlendable_userRows() {
-                if ((this.Table.ChildRelations["FK_lendable_user_lendables"] == null)) {
-                    return new lendable_userRow[0];
+            public usersRow usersRow {
+                get {
+                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK_lendables_users"])));
                 }
-                else {
-                    return ((lendable_userRow[])(base.GetChildRows(this.Table.ChildRelations["FK_lendable_user_lendables"])));
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_lendables_users"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isuser_idNull() {
+                return this.IsNull(this.tablelendables.user_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setuser_idNull() {
+                this[this.tablelendables.user_idColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2898,40 +2573,6 @@ namespace LibraryForms {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public genresRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class lendable_userRowChangeEvent : global::System.EventArgs {
-            
-            private lendable_userRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRowChangeEvent(lendable_userRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public lendable_userRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4471,233 +4112,6 @@ SELECT id, first_name, last_name, email, password, role FROM users WHERE (id = @
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class lendable_userTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public lendable_userTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "lendable_user";
-            tableMapping.ColumnMappings.Add("lendable_id", "lendable_id");
-            tableMapping.ColumnMappings.Add("user_id", "user_id");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[lendable_user] ([lendable_id], [user_id]) VALUES (@lendable_id" +
-                ", @user_id)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lendable_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lendable_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::LibraryForms.Properties.Settings.Default.librarydbConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT lendable_id, user_id FROM dbo.lendable_user";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(librarydbDataSet.lendable_userDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual librarydbDataSet.lendable_userDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            librarydbDataSet.lendable_userDataTable dataTable = new librarydbDataSet.lendable_userDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(librarydbDataSet.lendable_userDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(librarydbDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "lendable_user");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int lendable_id, int user_id) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(lendable_id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(user_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class lendablesTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -4816,10 +4230,11 @@ SELECT id, first_name, last_name, email, password, role FROM users WHERE (id = @
             tableMapping.ColumnMappings.Add("author_id", "author_id");
             tableMapping.ColumnMappings.Add("category_id", "category_id");
             tableMapping.ColumnMappings.Add("genre_id", "genre_id");
+            tableMapping.ColumnMappings.Add("user_id", "user_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[lendables] WHERE (([id] = @Original_id) AND ([slug] = @Original_slug) AND ([display_name] = @Original_display_name) AND ([author_id] = @Original_author_id) AND ([category_id] = @Original_category_id) AND ([genre_id] = @Original_genre_id))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[lendables] WHERE (([id] = @Original_id) AND ([slug] = @Original_slug) AND ([display_name] = @Original_display_name) AND ([author_id] = @Original_author_id) AND ([category_id] = @Original_category_id) AND ([genre_id] = @Original_genre_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_slug", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "slug", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4827,32 +4242,38 @@ SELECT id, first_name, last_name, email, password, role FROM users WHERE (id = @
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_author_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "author_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_category_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_genre_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "genre_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[lendables] ([slug], [display_name], [author_id], [category_id], [genre_id]) VALUES (@slug, @display_name, @author_id, @category_id, @genre_id);
-SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[lendables] ([slug], [display_name], [author_id], [category_id], [genre_id], [user_id]) VALUES (@slug, @display_name, @author_id, @category_id, @genre_id, @user_id);
+SELECT id, slug, display_name, author_id, category_id, genre_id, user_id FROM lendables WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@slug", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "slug", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@display_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "display_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@author_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "author_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@category_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@genre_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "genre_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[lendables] SET [slug] = @slug, [display_name] = @display_name, [author_id] = @author_id, [category_id] = @category_id, [genre_id] = @genre_id WHERE (([id] = @Original_id) AND ([slug] = @Original_slug) AND ([display_name] = @Original_display_name) AND ([author_id] = @Original_author_id) AND ([category_id] = @Original_category_id) AND ([genre_id] = @Original_genre_id));
-SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[lendables] SET [slug] = @slug, [display_name] = @display_name, [author_id] = @author_id, [category_id] = @category_id, [genre_id] = @genre_id, [user_id] = @user_id WHERE (([id] = @Original_id) AND ([slug] = @Original_slug) AND ([display_name] = @Original_display_name) AND ([author_id] = @Original_author_id) AND ([category_id] = @Original_category_id) AND ([genre_id] = @Original_genre_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)));
+SELECT id, slug, display_name, author_id, category_id, genre_id, user_id FROM lendables WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@slug", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "slug", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@display_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "display_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@author_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "author_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@category_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@genre_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "genre_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_slug", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "slug", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_display_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "display_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_author_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "author_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_category_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_genre_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "genre_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4869,8 +4290,8 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, slug, display_name, author_id, category_id, genre_id FROM dbo.lendable" +
-                "s";
+            this._commandCollection[0].CommandText = "SELECT id, slug, display_name, author_id, category_id, genre_id, user_id FROM dbo" +
+                ".lendables";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4931,7 +4352,7 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id) {
+        public virtual int Delete(int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id, global::System.Nullable<int> Original_user_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_slug == null)) {
                 throw new global::System.ArgumentNullException("Original_slug");
@@ -4948,6 +4369,14 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_author_id));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_category_id));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_genre_id));
+            if ((Original_user_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_user_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4968,7 +4397,7 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string slug, string display_name, int author_id, int category_id, int genre_id) {
+        public virtual int Insert(string slug, string display_name, int author_id, int category_id, int genre_id, global::System.Nullable<int> user_id) {
             if ((slug == null)) {
                 throw new global::System.ArgumentNullException("slug");
             }
@@ -4984,6 +4413,12 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(author_id));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(category_id));
             this.Adapter.InsertCommand.Parameters[4].Value = ((int)(genre_id));
+            if ((user_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(user_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5004,7 +4439,7 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string slug, string display_name, int author_id, int category_id, int genre_id, int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id, int id) {
+        public virtual int Update(string slug, string display_name, int author_id, int category_id, int genre_id, global::System.Nullable<int> user_id, int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id, global::System.Nullable<int> Original_user_id, int id) {
             if ((slug == null)) {
                 throw new global::System.ArgumentNullException("slug");
             }
@@ -5020,23 +4455,37 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(author_id));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(category_id));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(genre_id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id));
+            if ((user_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(user_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id));
             if ((Original_slug == null)) {
                 throw new global::System.ArgumentNullException("Original_slug");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_slug));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_slug));
             }
             if ((Original_display_name == null)) {
                 throw new global::System.ArgumentNullException("Original_display_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_display_name));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_display_name));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_author_id));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_category_id));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_genre_id));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_author_id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_category_id));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_genre_id));
+            if ((Original_user_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_user_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5057,8 +4506,8 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string slug, string display_name, int author_id, int category_id, int genre_id, int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id) {
-            return this.Update(slug, display_name, author_id, category_id, genre_id, Original_id, Original_slug, Original_display_name, Original_author_id, Original_category_id, Original_genre_id, Original_id);
+        public virtual int Update(string slug, string display_name, int author_id, int category_id, int genre_id, global::System.Nullable<int> user_id, int Original_id, string Original_slug, string Original_display_name, int Original_author_id, int Original_category_id, int Original_genre_id, global::System.Nullable<int> Original_user_id) {
+            return this.Update(slug, display_name, author_id, category_id, genre_id, user_id, Original_id, Original_slug, Original_display_name, Original_author_id, Original_category_id, Original_genre_id, Original_user_id, Original_id);
         }
     }
     
@@ -5081,8 +4530,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         private categoriesTableAdapter _categoriesTableAdapter;
         
         private genresTableAdapter _genresTableAdapter;
-        
-        private lendable_userTableAdapter _lendable_userTableAdapter;
         
         private lendablesTableAdapter _lendablesTableAdapter;
         
@@ -5162,20 +4609,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public lendable_userTableAdapter lendable_userTableAdapter {
-            get {
-                return this._lendable_userTableAdapter;
-            }
-            set {
-                this._lendable_userTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public lendablesTableAdapter lendablesTableAdapter {
             get {
                 return this._lendablesTableAdapter;
@@ -5220,10 +4653,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                             && (this._genresTableAdapter.Connection != null))) {
                     return this._genresTableAdapter.Connection;
                 }
-                if (((this._lendable_userTableAdapter != null) 
-                            && (this._lendable_userTableAdapter.Connection != null))) {
-                    return this._lendable_userTableAdapter.Connection;
-                }
                 if (((this._lendablesTableAdapter != null) 
                             && (this._lendablesTableAdapter.Connection != null))) {
                     return this._lendablesTableAdapter.Connection;
@@ -5253,9 +4682,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                 if ((this._genresTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._lendable_userTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._lendablesTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -5279,6 +4705,15 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._usersTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._usersTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._categoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.categories.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -5297,30 +4732,12 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._usersTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._lendablesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.lendables.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._lendablesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._lendable_userTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.lendable_user.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._lendable_userTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5342,6 +4759,14 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._usersTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._usersTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._categoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.categories.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -5358,27 +4783,11 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._usersTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._lendablesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.lendables.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._lendablesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._lendable_userTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.lendable_user.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._lendable_userTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5392,27 +4801,11 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(librarydbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._lendable_userTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.lendable_user.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._lendable_userTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._lendablesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.lendables.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._lendablesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._usersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._usersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5429,6 +4822,14 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._categoriesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._usersTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._usersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5496,11 +4897,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
             }
             if (((this._genresTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._genresTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._lendable_userTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._lendable_userTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -5575,15 +4971,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                     if (this._genresTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._genresTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._genresTableAdapter.Adapter);
-                    }
-                }
-                if ((this._lendable_userTableAdapter != null)) {
-                    revertConnections.Add(this._lendable_userTableAdapter, this._lendable_userTableAdapter.Connection);
-                    this._lendable_userTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._lendable_userTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._lendable_userTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._lendable_userTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._lendable_userTableAdapter.Adapter);
                     }
                 }
                 if ((this._lendablesTableAdapter != null)) {
@@ -5668,10 +5055,6 @@ SELECT id, slug, display_name, author_id, category_id, genre_id FROM lendables W
                 if ((this._genresTableAdapter != null)) {
                     this._genresTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._genresTableAdapter]));
                     this._genresTableAdapter.Transaction = null;
-                }
-                if ((this._lendable_userTableAdapter != null)) {
-                    this._lendable_userTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._lendable_userTableAdapter]));
-                    this._lendable_userTableAdapter.Transaction = null;
                 }
                 if ((this._lendablesTableAdapter != null)) {
                     this._lendablesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._lendablesTableAdapter]));
