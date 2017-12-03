@@ -33,5 +33,12 @@ namespace LibraryForms
             this.usersTableAdapter.Fill(this.librarydbDataSet.users);
 
         }
+
+        private void saveUsersButton_Click(object sender, EventArgs e)
+        {
+            usersBindingSource.EndEdit();
+            usersTableAdapter.Update(librarydbDataSet.users);
+            MessageBox.Show("Users have been updated!");
+        }
     }
 }
