@@ -40,5 +40,33 @@ namespace LibraryForms
             usersTableAdapter.Update(librarydbDataSet.users);
             MessageBox.Show("Users have been updated!");
         }
+
+        private void saveLendablesButton_Click(object sender, EventArgs e)
+        {
+            lendablesBindingSource.EndEdit();
+            lendablesTableAdapter.Update(librarydbDataSet.lendables);
+            MessageBox.Show("Lendables have been updated!");
+        }
+
+        private void saveCategoriesButton_Click(object sender, EventArgs e)
+        {
+            categoriesBindingSource.EndEdit();
+            categoriesTableAdapter.Update(librarydbDataSet.categories);
+            MessageBox.Show("Categories have been updated!");
+        }
+
+        private void saveGenresButton_Click(object sender, EventArgs e)
+        {
+            genresBindingSource.EndEdit();
+            genresTableAdapter.Update(librarydbDataSet.genres);
+            MessageBox.Show("Genres have been updated!");
+        }
+
+        private void saveAuthorsButton_Click(object sender, EventArgs e)
+        {
+            authorsBindingSource.EndEdit();
+            authorsTableAdapter.Update(librarydbDataSet.authors);
+            MessageBox.Show("Authors have been updated!");
+        }
     }
 }
