@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Linq.SqlClient;
 
 namespace LibraryForms
 {
     public partial class LibrarianForm : Form
     {
+        LibraryDBDataContext LibraryDB = new LibraryDBDataContext();
+        
         public LibrarianForm()
         {
             InitializeComponent();
@@ -67,6 +70,70 @@ namespace LibraryForms
             authorsBindingSource.EndEdit();
             authorsTableAdapter.Update(librarydbDataSet.authors);
             MessageBox.Show("Authors have been updated!");
+        }
+
+        private void searchLendableButton_Click(object sender, EventArgs e)
+        {
+            List<Lendable> lendables;
+            //validate search value
+            if (searchValueTextBox.TextLength > 0)
+            {
+                try
+                {
+                    lendables = (
+                            from l in LibraryDB.lendables
+                            join a in LibraryDB.authors on l.author_id equals a.id
+                            join c in LibraryDB.categories on l.category_id equals c.id
+                            join g in LibraryDB.genres on l.genre_id equals g.id
+                            where SqlMethods.Like(l.display_name, "%" + searchValueTextBox.Text + "%")
+                            select new Lendable
+                            {
+                                id = l.id,
+                                slug = l.slug,
+                                display_name = l.display_name,
+                                author = new Author
+                                {
+                                    id = a.id,
+                                    first_name = a.first_name,
+                                    last_name = a.last_name
+                                },
+                                category = new Category
+                                {
+                                    id = c.id,
+                                    slug = c.slug,
+                                    display_name = c.display_name
+                                },
+                                genre = new Genre
+                                {
+                                    id = g.id,
+                                    slug = g.slug,
+                                    display_name = g.display_name
+                                }
+                            }
+                        ).ToList<Lendable>();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("No lendables have been found");
+                    throw;
+                }
+
+                if (lendables != null)
+	            {
+                    ColumnHeader[] cols = new ColumnHeader[] { 
+                        new ColumnHeader { Text = "Name", Width = 100 },
+                        new ColumnHeader { Text = "Author" },
+                        new ColumnHeader { Text = "Category" }, 
+                        new ColumnHeader { Text = "Genre" }
+                    };
+
+                    resultsListView.Columns.AddRange(cols);
+                    
+
+    		 
+	            }
+                       
+            }
         }
     }
 }

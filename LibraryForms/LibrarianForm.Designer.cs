@@ -41,21 +41,25 @@
             this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorsTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.authorsTableAdapter();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.saveAuthorsButton = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.saveGenresButton = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slugDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.displaynameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.saveCategoriesButton = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slugDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.displaynameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.saveLendablesButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slugDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,19 +69,23 @@
             this.genreidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.user_id = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.saveUsersButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveLendablesButton = new System.Windows.Forms.Button();
-            this.saveCategoriesButton = new System.Windows.Forms.Button();
-            this.saveGenresButton = new System.Windows.Forms.Button();
-            this.saveAuthorsButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchValueTextBox = new System.Windows.Forms.TextBox();
+            this.searchLendableButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.resultsListView = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).BeginInit();
@@ -95,6 +103,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // librarydbDataSet
@@ -159,6 +169,16 @@
             this.tabPage5.Text = "Authors";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // saveAuthorsButton
+            // 
+            this.saveAuthorsButton.Location = new System.Drawing.Point(677, 534);
+            this.saveAuthorsButton.Name = "saveAuthorsButton";
+            this.saveAuthorsButton.Size = new System.Drawing.Size(75, 23);
+            this.saveAuthorsButton.TabIndex = 1;
+            this.saveAuthorsButton.Text = "SAVE";
+            this.saveAuthorsButton.UseVisualStyleBackColor = true;
+            this.saveAuthorsButton.Click += new System.EventHandler(this.saveAuthorsButton_Click);
+            // 
             // dataGridView5
             // 
             this.dataGridView5.AutoGenerateColumns = false;
@@ -204,6 +224,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Genres";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // saveGenresButton
+            // 
+            this.saveGenresButton.Location = new System.Drawing.Point(677, 534);
+            this.saveGenresButton.Name = "saveGenresButton";
+            this.saveGenresButton.Size = new System.Drawing.Size(75, 23);
+            this.saveGenresButton.TabIndex = 1;
+            this.saveGenresButton.Text = "SAVE";
+            this.saveGenresButton.UseVisualStyleBackColor = true;
+            this.saveGenresButton.Click += new System.EventHandler(this.saveGenresButton_Click);
             // 
             // dataGridView4
             // 
@@ -251,6 +281,16 @@
             this.tabPage3.Text = "Categories";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // saveCategoriesButton
+            // 
+            this.saveCategoriesButton.Location = new System.Drawing.Point(677, 534);
+            this.saveCategoriesButton.Name = "saveCategoriesButton";
+            this.saveCategoriesButton.Size = new System.Drawing.Size(75, 23);
+            this.saveCategoriesButton.TabIndex = 1;
+            this.saveCategoriesButton.Text = "SAVE";
+            this.saveCategoriesButton.UseVisualStyleBackColor = true;
+            this.saveCategoriesButton.Click += new System.EventHandler(this.saveCategoriesButton_Click);
+            // 
             // dataGridView3
             // 
             this.dataGridView3.AutoGenerateColumns = false;
@@ -296,6 +336,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Lendables";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // saveLendablesButton
+            // 
+            this.saveLendablesButton.Location = new System.Drawing.Point(677, 534);
+            this.saveLendablesButton.Name = "saveLendablesButton";
+            this.saveLendablesButton.Size = new System.Drawing.Size(75, 23);
+            this.saveLendablesButton.TabIndex = 1;
+            this.saveLendablesButton.Text = "SAVE";
+            this.saveLendablesButton.UseVisualStyleBackColor = true;
+            this.saveLendablesButton.Click += new System.EventHandler(this.saveLendablesButton_Click);
             // 
             // dataGridView2
             // 
@@ -391,6 +441,16 @@
             this.tabPage1.Text = "Users";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // saveUsersButton
+            // 
+            this.saveUsersButton.Location = new System.Drawing.Point(677, 534);
+            this.saveUsersButton.Name = "saveUsersButton";
+            this.saveUsersButton.Size = new System.Drawing.Size(75, 23);
+            this.saveUsersButton.TabIndex = 1;
+            this.saveUsersButton.Text = "SAVE";
+            this.saveUsersButton.UseVisualStyleBackColor = true;
+            this.saveUsersButton.Click += new System.EventHandler(this.saveUsersButton_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
@@ -408,30 +468,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(754, 525);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(768, 589);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // saveUsersButton
-            // 
-            this.saveUsersButton.Location = new System.Drawing.Point(677, 534);
-            this.saveUsersButton.Name = "saveUsersButton";
-            this.saveUsersButton.Size = new System.Drawing.Size(75, 23);
-            this.saveUsersButton.TabIndex = 1;
-            this.saveUsersButton.Text = "SAVE";
-            this.saveUsersButton.UseVisualStyleBackColor = true;
-            this.saveUsersButton.Click += new System.EventHandler(this.saveUsersButton_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -471,45 +507,102 @@
             this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
             this.roleDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // saveLendablesButton
+            // tabControl1
             // 
-            this.saveLendablesButton.Location = new System.Drawing.Point(677, 534);
-            this.saveLendablesButton.Name = "saveLendablesButton";
-            this.saveLendablesButton.Size = new System.Drawing.Size(75, 23);
-            this.saveLendablesButton.TabIndex = 1;
-            this.saveLendablesButton.Text = "SAVE";
-            this.saveLendablesButton.UseVisualStyleBackColor = true;
-            this.saveLendablesButton.Click += new System.EventHandler(this.saveLendablesButton_Click);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(768, 589);
+            this.tabControl1.TabIndex = 0;
             // 
-            // saveCategoriesButton
+            // tabPage6
             // 
-            this.saveCategoriesButton.Location = new System.Drawing.Point(677, 534);
-            this.saveCategoriesButton.Name = "saveCategoriesButton";
-            this.saveCategoriesButton.Size = new System.Drawing.Size(75, 23);
-            this.saveCategoriesButton.TabIndex = 1;
-            this.saveCategoriesButton.Text = "SAVE";
-            this.saveCategoriesButton.UseVisualStyleBackColor = true;
-            this.saveCategoriesButton.Click += new System.EventHandler(this.saveCategoriesButton_Click);
+            this.tabPage6.Controls.Add(this.groupBox1);
+            this.tabPage6.Controls.Add(this.searchLendableButton);
+            this.tabPage6.Controls.Add(this.searchValueTextBox);
+            this.tabPage6.Controls.Add(this.label4);
+            this.tabPage6.Controls.Add(this.label2);
+            this.tabPage6.Controls.Add(this.label1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(760, 563);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "SEARCH FOR LENDABLE";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // saveGenresButton
+            // label4
             // 
-            this.saveGenresButton.Location = new System.Drawing.Point(677, 534);
-            this.saveGenresButton.Name = "saveGenresButton";
-            this.saveGenresButton.Size = new System.Drawing.Size(75, 23);
-            this.saveGenresButton.TabIndex = 1;
-            this.saveGenresButton.Text = "SAVE";
-            this.saveGenresButton.UseVisualStyleBackColor = true;
-            this.saveGenresButton.Click += new System.EventHandler(this.saveGenresButton_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "SEARCH FOR";
             // 
-            // saveAuthorsButton
+            // label2
             // 
-            this.saveAuthorsButton.Location = new System.Drawing.Point(677, 534);
-            this.saveAuthorsButton.Name = "saveAuthorsButton";
-            this.saveAuthorsButton.Size = new System.Drawing.Size(75, 23);
-            this.saveAuthorsButton.TabIndex = 1;
-            this.saveAuthorsButton.Text = "SAVE";
-            this.saveAuthorsButton.UseVisualStyleBackColor = true;
-            this.saveAuthorsButton.Click += new System.EventHandler(this.saveAuthorsButton_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "very";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(36, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(235, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ADVANCED SEARCH";
+            // 
+            // searchValueTextBox
+            // 
+            this.searchValueTextBox.Location = new System.Drawing.Point(6, 63);
+            this.searchValueTextBox.Name = "searchValueTextBox";
+            this.searchValueTextBox.Size = new System.Drawing.Size(667, 20);
+            this.searchValueTextBox.TabIndex = 5;
+            // 
+            // searchLendableButton
+            // 
+            this.searchLendableButton.Location = new System.Drawing.Point(679, 61);
+            this.searchLendableButton.Name = "searchLendableButton";
+            this.searchLendableButton.Size = new System.Drawing.Size(75, 23);
+            this.searchLendableButton.TabIndex = 6;
+            this.searchLendableButton.Text = "SEARCH";
+            this.searchLendableButton.UseVisualStyleBackColor = true;
+            this.searchLendableButton.Click += new System.EventHandler(this.searchLendableButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.resultsListView);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(3, 92);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(754, 468);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "RESULTS";
+            // 
+            // resultsListView
+            // 
+            this.resultsListView.Location = new System.Drawing.Point(3, 19);
+            this.resultsListView.Name = "resultsListView";
+            this.resultsListView.Size = new System.Drawing.Size(745, 443);
+            this.resultsListView.TabIndex = 0;
+            this.resultsListView.UseCompatibleStateImageBehavior = false;
+            this.resultsListView.View = System.Windows.Forms.View.Details;
             // 
             // LibrarianForm
             // 
@@ -538,6 +631,9 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -593,5 +689,13 @@
         private System.Windows.Forms.Button saveCategoriesButton;
         private System.Windows.Forms.Button saveGenresButton;
         private System.Windows.Forms.Button saveAuthorsButton;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button searchLendableButton;
+        private System.Windows.Forms.TextBox searchValueTextBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView resultsListView;
     }
 }
