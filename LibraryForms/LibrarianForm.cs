@@ -34,6 +34,7 @@ namespace LibraryForms
             this.usersTableAdapter.Fill(this.librarydbDataSet.users);
             // TODO: This line of code loads data into the 'librarydbDataSet.users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.librarydbDataSet.users);
+            this.addColumnsToListView();
 
         }
 
@@ -73,17 +74,7 @@ namespace LibraryForms
         }
 
         private void searchLendableButton_Click(object sender, EventArgs e)
-        {
-            ColumnHeader[] cols = new ColumnHeader[] { 
-                        new ColumnHeader { Text = "Name", Width = 120 },
-                        new ColumnHeader { Text = "Author",Width = 100 },
-                        new ColumnHeader { Text = "Category", Width = 100 }, 
-                        new ColumnHeader { Text = "Genre", Width = 100 },
-                        new ColumnHeader { Text = "Free", Width = 100 },
-                    };
-
-            resultsListView.Columns.AddRange(cols);
-            
+        {         
             //validate search value
             if (searchValueTextBox.TextLength > 0)
             {
@@ -150,6 +141,18 @@ namespace LibraryForms
 	            }
                        
             }
+        }
+
+        private void addColumnsToListView() {
+            ColumnHeader[] cols = new ColumnHeader[] { 
+                        new ColumnHeader { Text = "Name", Width = 120 },
+                        new ColumnHeader { Text = "Author",Width = 100 },
+                        new ColumnHeader { Text = "Category", Width = 100 }, 
+                        new ColumnHeader { Text = "Genre", Width = 100 },
+                        new ColumnHeader { Text = "Free", Width = 100 },
+                    };
+
+            resultsListView.Columns.AddRange(cols);
         }
     }
 }
