@@ -31,35 +31,34 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.messageLabel = new System.Windows.Forms.Label();
             this.borrowButton = new System.Windows.Forms.Button();
             this.allItemsGridView = new System.Windows.Forms.DataGridView();
-            this.librarydbDataSet = new LibraryForms.librarydbDataSet();
-            this.lendablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lendablesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.lendablesTableAdapter();
-            this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.authorsTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.authorsTableAdapter();
-            this.categoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoriesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.categoriesTableAdapter();
-            this.categoriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slugDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.displaynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authoridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.librarydbDataSet = new LibraryForms.librarydbDataSet();
             this.categoryidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.categoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.genreidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.categoriesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lendablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lendablesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.lendablesTableAdapter();
+            this.authorsTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.authorsTableAdapter();
+            this.categoriesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.categoriesTableAdapter();
+            this.borrowedItemListView = new System.Windows.Forms.ListView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allItemsGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -75,7 +74,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.borrowedItemListView);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -83,15 +82,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Borrowed Items";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(778, 550);
-            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -144,43 +134,6 @@
             this.allItemsGridView.Size = new System.Drawing.Size(778, 503);
             this.allItemsGridView.TabIndex = 0;
             // 
-            // librarydbDataSet
-            // 
-            this.librarydbDataSet.DataSetName = "librarydbDataSet";
-            this.librarydbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lendablesBindingSource
-            // 
-            this.lendablesBindingSource.DataMember = "lendables";
-            this.lendablesBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // lendablesTableAdapter
-            // 
-            this.lendablesTableAdapter.ClearBeforeFill = true;
-            // 
-            // authorsBindingSource
-            // 
-            this.authorsBindingSource.DataMember = "authors";
-            this.authorsBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // authorsTableAdapter
-            // 
-            this.authorsTableAdapter.ClearBeforeFill = true;
-            // 
-            // categoriesBindingSource
-            // 
-            this.categoriesBindingSource.DataMember = "categories";
-            this.categoriesBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // categoriesTableAdapter
-            // 
-            this.categoriesTableAdapter.ClearBeforeFill = true;
-            // 
-            // categoriesBindingSource1
-            // 
-            this.categoriesBindingSource1.DataMember = "categories";
-            this.categoriesBindingSource1.DataSource = this.librarydbDataSet;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -218,6 +171,16 @@
             this.authoridDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.authoridDataGridViewTextBoxColumn.ValueMember = "id";
             // 
+            // authorsBindingSource
+            // 
+            this.authorsBindingSource.DataMember = "authors";
+            this.authorsBindingSource.DataSource = this.librarydbDataSet;
+            // 
+            // librarydbDataSet
+            // 
+            this.librarydbDataSet.DataSetName = "librarydbDataSet";
+            this.librarydbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // categoryidDataGridViewTextBoxColumn
             // 
             this.categoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id";
@@ -230,6 +193,11 @@
             this.categoryidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.categoryidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.categoryidDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
+            // categoriesBindingSource
+            // 
+            this.categoriesBindingSource.DataMember = "categories";
+            this.categoriesBindingSource.DataSource = this.librarydbDataSet;
             // 
             // genreidDataGridViewTextBoxColumn
             // 
@@ -244,6 +212,38 @@
             this.genreidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.genreidDataGridViewTextBoxColumn.ValueMember = "id";
             // 
+            // categoriesBindingSource1
+            // 
+            this.categoriesBindingSource1.DataMember = "categories";
+            this.categoriesBindingSource1.DataSource = this.librarydbDataSet;
+            // 
+            // lendablesBindingSource
+            // 
+            this.lendablesBindingSource.DataMember = "lendables";
+            this.lendablesBindingSource.DataSource = this.librarydbDataSet;
+            // 
+            // lendablesTableAdapter
+            // 
+            this.lendablesTableAdapter.ClearBeforeFill = true;
+            // 
+            // authorsTableAdapter
+            // 
+            this.authorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // categoriesTableAdapter
+            // 
+            this.categoriesTableAdapter.ClearBeforeFill = true;
+            // 
+            // borrowedItemListView
+            // 
+            this.borrowedItemListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borrowedItemListView.Location = new System.Drawing.Point(3, 3);
+            this.borrowedItemListView.Name = "borrowedItemListView";
+            this.borrowedItemListView.Size = new System.Drawing.Size(778, 550);
+            this.borrowedItemListView.TabIndex = 0;
+            this.borrowedItemListView.UseCompatibleStateImageBehavior = false;
+            this.borrowedItemListView.View = System.Windows.Forms.View.Details;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,15 +256,14 @@
             this.Load += new System.EventHandler(this.StudentForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allItemsGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,7 +273,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.Button borrowButton;
         private System.Windows.Forms.DataGridView allItemsGridView;
@@ -292,5 +290,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn authoridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn categoryidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn genreidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ListView borrowedItemListView;
     }
 }

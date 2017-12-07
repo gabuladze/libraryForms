@@ -25,7 +25,19 @@ namespace LibraryForms
             this.authorsTableAdapter.Fill(this.librarydbDataSet.authors);
             // TODO: This line of code loads data into the 'librarydbDataSet.lendables' table. You can move, or remove it, as needed.
             this.lendablesTableAdapter.Fill(this.librarydbDataSet.lendables);
+            this.addColumnsToListView();
+        }
 
+        private void addColumnsToListView()
+        {
+            ColumnHeader[] cols = new ColumnHeader[] { 
+                        new ColumnHeader { Text = "Name", Width = 120 },
+                        new ColumnHeader { Text = "Author",Width = 100 },
+                        new ColumnHeader { Text = "Category", Width = 100 }, 
+                        new ColumnHeader { Text = "Genre", Width = 100 }
+                    };
+
+            borrowedItemListView.Columns.AddRange(cols);
         }
     }
 }
