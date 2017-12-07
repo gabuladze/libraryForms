@@ -61,13 +61,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.saveLendablesButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slugDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.displaynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authoridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.categoryidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.genreidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.user_id = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.saveUsersButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -79,13 +72,19 @@
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.resultsListView = new System.Windows.Forms.ListView();
+            this.searchLendableButton = new System.Windows.Forms.Button();
+            this.searchValueTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.searchValueTextBox = new System.Windows.Forms.TextBox();
-            this.searchLendableButton = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.resultsListView = new System.Windows.Forms.ListView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slugDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.displaynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authoridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.categoryidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.genreidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).BeginInit();
@@ -357,77 +356,13 @@
             this.displaynameDataGridViewTextBoxColumn,
             this.authoridDataGridViewTextBoxColumn,
             this.categoryidDataGridViewTextBoxColumn,
-            this.genreidDataGridViewTextBoxColumn,
-            this.user_id});
+            this.genreidDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.lendablesBindingSource;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(754, 525);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // slugDataGridViewTextBoxColumn
-            // 
-            this.slugDataGridViewTextBoxColumn.DataPropertyName = "slug";
-            this.slugDataGridViewTextBoxColumn.HeaderText = "Slug";
-            this.slugDataGridViewTextBoxColumn.Name = "slugDataGridViewTextBoxColumn";
-            // 
-            // displaynameDataGridViewTextBoxColumn
-            // 
-            this.displaynameDataGridViewTextBoxColumn.DataPropertyName = "display_name";
-            this.displaynameDataGridViewTextBoxColumn.HeaderText = "Display Name";
-            this.displaynameDataGridViewTextBoxColumn.Name = "displaynameDataGridViewTextBoxColumn";
-            // 
-            // authoridDataGridViewTextBoxColumn
-            // 
-            this.authoridDataGridViewTextBoxColumn.DataPropertyName = "author_id";
-            this.authoridDataGridViewTextBoxColumn.DataSource = this.authorsBindingSource;
-            this.authoridDataGridViewTextBoxColumn.DisplayMember = "first_name";
-            this.authoridDataGridViewTextBoxColumn.HeaderText = "Author";
-            this.authoridDataGridViewTextBoxColumn.Name = "authoridDataGridViewTextBoxColumn";
-            this.authoridDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.authoridDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.authoridDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // categoryidDataGridViewTextBoxColumn
-            // 
-            this.categoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id";
-            this.categoryidDataGridViewTextBoxColumn.DataSource = this.categoriesBindingSource;
-            this.categoryidDataGridViewTextBoxColumn.DisplayMember = "display_name";
-            this.categoryidDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryidDataGridViewTextBoxColumn.Name = "categoryidDataGridViewTextBoxColumn";
-            this.categoryidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.categoryidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.categoryidDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // genreidDataGridViewTextBoxColumn
-            // 
-            this.genreidDataGridViewTextBoxColumn.DataPropertyName = "genre_id";
-            this.genreidDataGridViewTextBoxColumn.DataSource = this.genresBindingSource;
-            this.genreidDataGridViewTextBoxColumn.DisplayMember = "display_name";
-            this.genreidDataGridViewTextBoxColumn.HeaderText = "Genre";
-            this.genreidDataGridViewTextBoxColumn.Name = "genreidDataGridViewTextBoxColumn";
-            this.genreidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.genreidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.genreidDataGridViewTextBoxColumn.ValueMember = "id";
-            // 
-            // user_id
-            // 
-            this.user_id.DataPropertyName = "user_id";
-            this.user_id.DataSource = this.usersBindingSource;
-            this.user_id.DisplayMember = "first_name";
-            this.user_id.HeaderText = "Lended to";
-            this.user_id.Name = "user_id";
-            this.user_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.user_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.user_id.ValueMember = "id";
             // 
             // tabPage1
             // 
@@ -538,6 +473,43 @@
             this.tabPage6.Text = "SEARCH FOR LENDABLE";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.resultsListView);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(3, 92);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(754, 468);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "RESULTS";
+            // 
+            // resultsListView
+            // 
+            this.resultsListView.Location = new System.Drawing.Point(3, 19);
+            this.resultsListView.Name = "resultsListView";
+            this.resultsListView.Size = new System.Drawing.Size(745, 443);
+            this.resultsListView.TabIndex = 0;
+            this.resultsListView.UseCompatibleStateImageBehavior = false;
+            this.resultsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // searchLendableButton
+            // 
+            this.searchLendableButton.Location = new System.Drawing.Point(679, 61);
+            this.searchLendableButton.Name = "searchLendableButton";
+            this.searchLendableButton.Size = new System.Drawing.Size(75, 23);
+            this.searchLendableButton.TabIndex = 6;
+            this.searchLendableButton.Text = "SEARCH";
+            this.searchLendableButton.UseVisualStyleBackColor = true;
+            this.searchLendableButton.Click += new System.EventHandler(this.searchLendableButton_Click);
+            // 
+            // searchValueTextBox
+            // 
+            this.searchValueTextBox.Location = new System.Drawing.Point(6, 63);
+            this.searchValueTextBox.Name = "searchValueTextBox";
+            this.searchValueTextBox.Size = new System.Drawing.Size(667, 20);
+            this.searchValueTextBox.TabIndex = 5;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -567,42 +539,57 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ADVANCED SEARCH";
             // 
-            // searchValueTextBox
+            // idDataGridViewTextBoxColumn1
             // 
-            this.searchValueTextBox.Location = new System.Drawing.Point(6, 63);
-            this.searchValueTextBox.Name = "searchValueTextBox";
-            this.searchValueTextBox.Size = new System.Drawing.Size(667, 20);
-            this.searchValueTextBox.TabIndex = 5;
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // searchLendableButton
+            // slugDataGridViewTextBoxColumn
             // 
-            this.searchLendableButton.Location = new System.Drawing.Point(679, 61);
-            this.searchLendableButton.Name = "searchLendableButton";
-            this.searchLendableButton.Size = new System.Drawing.Size(75, 23);
-            this.searchLendableButton.TabIndex = 6;
-            this.searchLendableButton.Text = "SEARCH";
-            this.searchLendableButton.UseVisualStyleBackColor = true;
-            this.searchLendableButton.Click += new System.EventHandler(this.searchLendableButton_Click);
+            this.slugDataGridViewTextBoxColumn.DataPropertyName = "slug";
+            this.slugDataGridViewTextBoxColumn.HeaderText = "Slug";
+            this.slugDataGridViewTextBoxColumn.Name = "slugDataGridViewTextBoxColumn";
             // 
-            // groupBox1
+            // displaynameDataGridViewTextBoxColumn
             // 
-            this.groupBox1.Controls.Add(this.resultsListView);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 92);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(754, 468);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "RESULTS";
+            this.displaynameDataGridViewTextBoxColumn.DataPropertyName = "display_name";
+            this.displaynameDataGridViewTextBoxColumn.HeaderText = "Display Name";
+            this.displaynameDataGridViewTextBoxColumn.Name = "displaynameDataGridViewTextBoxColumn";
             // 
-            // resultsListView
+            // authoridDataGridViewTextBoxColumn
             // 
-            this.resultsListView.Location = new System.Drawing.Point(3, 19);
-            this.resultsListView.Name = "resultsListView";
-            this.resultsListView.Size = new System.Drawing.Size(745, 443);
-            this.resultsListView.TabIndex = 0;
-            this.resultsListView.UseCompatibleStateImageBehavior = false;
-            this.resultsListView.View = System.Windows.Forms.View.Details;
+            this.authoridDataGridViewTextBoxColumn.DataPropertyName = "author_id";
+            this.authoridDataGridViewTextBoxColumn.DataSource = this.authorsBindingSource;
+            this.authoridDataGridViewTextBoxColumn.DisplayMember = "first_name";
+            this.authoridDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authoridDataGridViewTextBoxColumn.Name = "authoridDataGridViewTextBoxColumn";
+            this.authoridDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.authoridDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.authoridDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
+            // categoryidDataGridViewTextBoxColumn
+            // 
+            this.categoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id";
+            this.categoryidDataGridViewTextBoxColumn.DataSource = this.categoriesBindingSource;
+            this.categoryidDataGridViewTextBoxColumn.DisplayMember = "display_name";
+            this.categoryidDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryidDataGridViewTextBoxColumn.Name = "categoryidDataGridViewTextBoxColumn";
+            this.categoryidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.categoryidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.categoryidDataGridViewTextBoxColumn.ValueMember = "id";
+            // 
+            // genreidDataGridViewTextBoxColumn
+            // 
+            this.genreidDataGridViewTextBoxColumn.DataPropertyName = "genre_id";
+            this.genreidDataGridViewTextBoxColumn.DataSource = this.genresBindingSource;
+            this.genreidDataGridViewTextBoxColumn.DisplayMember = "display_name";
+            this.genreidDataGridViewTextBoxColumn.HeaderText = "Genre";
+            this.genreidDataGridViewTextBoxColumn.Name = "genreidDataGridViewTextBoxColumn";
+            this.genreidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.genreidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.genreidDataGridViewTextBoxColumn.ValueMember = "id";
             // 
             // LibrarianForm
             // 
@@ -671,13 +658,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn slugDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn displaynameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn slugDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn displaynameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn authoridDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn categoryidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn genreidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn user_id;
         private System.Windows.Forms.Button saveUsersButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
@@ -697,5 +677,11 @@
         private System.Windows.Forms.TextBox searchValueTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView resultsListView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn slugDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn displaynameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn authoridDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn categoryidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn genreidDataGridViewTextBoxColumn;
     }
 }

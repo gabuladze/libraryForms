@@ -87,6 +87,8 @@ namespace LibraryForms
                             join g in LibraryDB.genres on l.genre_id equals g.id
                             join lu in LibraryDB.lendable_users on l.id equals lu.lendable_id into finalGroup
                             from finalItem in finalGroup.DefaultIfEmpty()
+                            join u in LibraryDB.users on finalItem.user_id equals u.id into userGroup
+                            from userItem in userGroup.DefaultIfEmpty()
                             where SqlMethods.Like(l.display_name, "%" + searchValueTextBox.Text + "%")
                             select new Lendable
                             {
@@ -113,7 +115,9 @@ namespace LibraryForms
                                 },
                                 user = new User
                                 {
-                                    id = finalItem.user_id != null ? finalItem.user_id : 0
+                                    id = userItem.id != null ? userItem.id : 0,
+                                    first_name = userItem.first_name != null ? userItem.first_name : "",
+                                    last_name = userItem.last_name != null ? userItem.last_name : ""
                                 }
                             }
                         ).ToList<Lendable>();
@@ -135,6 +139,7 @@ namespace LibraryForms
                         i1.SubItems.Add(item.category.display_name);
                         i1.SubItems.Add(item.genre.display_name);
                         i1.SubItems.Add(item.user.id != 0 ? "NO" : "YES");
+                        i1.SubItems.Add(item.user.first_name != "" ? item.user.first_name + " " + item.user.last_name : "");
 
                         resultsListView.Items.Add(i1); 
                     }
@@ -150,6 +155,7 @@ namespace LibraryForms
                         new ColumnHeader { Text = "Category", Width = 100 }, 
                         new ColumnHeader { Text = "Genre", Width = 100 },
                         new ColumnHeader { Text = "Free", Width = 100 },
+                        new ColumnHeader { Text = "Lended To", Width = 100 },
                     };
 
             resultsListView.Columns.AddRange(cols);
