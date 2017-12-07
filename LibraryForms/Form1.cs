@@ -62,7 +62,7 @@ namespace LibraryForms
             switch (this.currentUser.role)
             {
                 case "USER":
-                    this.StudentForm = new StudentForm();
+                    this.StudentForm = new StudentForm(currentUser);
                     this.StudentForm.Show();
                     break;
                 case "LIBRARIAN":
