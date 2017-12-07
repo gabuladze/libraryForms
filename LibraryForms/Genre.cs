@@ -23,7 +23,7 @@ public class Genre
 		set;
 	}
 
-	public virtual object display_name
+	public virtual string display_name
 	{
 		get;
 		set;

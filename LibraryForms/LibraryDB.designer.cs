@@ -282,6 +282,8 @@ namespace LibraryForms
 		
 		private string _role;
 		
+		private EntitySet<lendable> _lendables;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -302,6 +304,7 @@ namespace LibraryForms
 		
 		public user()
 		{
+			this._lendables = new EntitySet<lendable>(new Action<lendable>(this.attach_lendables), new Action<lendable>(this.detach_lendables));
 			OnCreated();
 		}
 		
@@ -425,6 +428,19 @@ namespace LibraryForms
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_lendable", Storage="_lendables", ThisKey="id", OtherKey="user_id")]
+		public EntitySet<lendable> lendables
+		{
+			get
+			{
+				return this._lendables;
+			}
+			set
+			{
+				this._lendables.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -443,6 +459,18 @@ namespace LibraryForms
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_lendables(lendable entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_lendables(lendable entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
 		}
 	}
 	
@@ -785,11 +813,15 @@ namespace LibraryForms
 		
 		private int _genre_id;
 		
+		private System.Nullable<int> _user_id;
+		
 		private EntityRef<author> _author;
 		
 		private EntityRef<category> _category;
 		
 		private EntityRef<genre> _genre;
+		
+		private EntityRef<user> _user;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -807,6 +839,8 @@ namespace LibraryForms
     partial void Oncategory_idChanged();
     partial void Ongenre_idChanging(int value);
     partial void Ongenre_idChanged();
+    partial void Onuser_idChanging(System.Nullable<int> value);
+    partial void Onuser_idChanged();
     #endregion
 		
 		public lendable()
@@ -814,6 +848,7 @@ namespace LibraryForms
 			this._author = default(EntityRef<author>);
 			this._category = default(EntityRef<category>);
 			this._genre = default(EntityRef<genre>);
+			this._user = default(EntityRef<user>);
 			OnCreated();
 		}
 		
@@ -949,6 +984,30 @@ namespace LibraryForms
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
+		public System.Nullable<int> user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_lendable", Storage="_author", ThisKey="author_id", OtherKey="id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public author author
 		{
@@ -1047,6 +1106,40 @@ namespace LibraryForms
 						this._genre_id = default(int);
 					}
 					this.SendPropertyChanged("genre");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_lendable", Storage="_user", ThisKey="user_id", OtherKey="id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.lendables.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.lendables.Add(this);
+						this._user_id = value.id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user");
 				}
 			}
 		}

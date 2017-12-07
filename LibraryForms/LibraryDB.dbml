@@ -17,6 +17,7 @@
       <Column Name="password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="role" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="user_lendable_user" Member="lendable_users" ThisKey="id" OtherKey="user_id" Type="lendable_user" />
+      <Association Name="user_lendable" Member="lendables" ThisKey="id" OtherKey="user_id" Type="lendable" />
     </Type>
   </Table>
   <Table Name="dbo.categories" Member="categories">
@@ -39,8 +40,8 @@
     <Type Name="lendable_user">
       <Column Name="lendable_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="user_lendable_user" Member="user" ThisKey="user_id" OtherKey="id" Type="user" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="lendable_lendable_user" Member="lendable" ThisKey="lendable_id" OtherKey="id" Type="lendable" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="user_lendable_user" Member="user" ThisKey="user_id" OtherKey="id" Type="user" IsForeignKey="true" />
+      <Association Name="lendable_lendable_user" Member="lendable" ThisKey="lendable_id" OtherKey="id" Type="lendable" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.lendables" Member="lendables">
@@ -51,10 +52,12 @@
       <Column Name="author_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="genre_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="lendable_lendable_user" Member="lendable_users" ThisKey="id" OtherKey="lendable_id" Type="lendable_user" />
       <Association Name="author_lendable" Member="author" ThisKey="author_id" OtherKey="id" Type="author" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="category_lendable" Member="category" ThisKey="category_id" OtherKey="id" Type="category" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="genre_lendable" Member="genre" ThisKey="genre_id" OtherKey="id" Type="genre" IsForeignKey="true" />
+      <Association Name="user_lendable" Member="user" ThisKey="user_id" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

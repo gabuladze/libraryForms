@@ -47,5 +47,11 @@ public class User
 		set;
 	}
 
+	public virtual Lendable Lendable
+	{
+		get;
+		set;
+	}
+
 }
 

@@ -14,7 +14,7 @@ namespace LibraryForms
     public partial class LibrarianForm : Form
     {
         LibraryDBDataContext LibraryDB = new LibraryDBDataContext();
-        
+        List<Lendable> lendables;
         public LibrarianForm()
         {
             InitializeComponent();
@@ -74,17 +74,28 @@ namespace LibraryForms
 
         private void searchLendableButton_Click(object sender, EventArgs e)
         {
-            List<Lendable> lendables;
+            ColumnHeader[] cols = new ColumnHeader[] { 
+                        new ColumnHeader { Text = "Name", Width = 120 },
+                        new ColumnHeader { Text = "Author",Width = 100 },
+                        new ColumnHeader { Text = "Category", Width = 100 }, 
+                        new ColumnHeader { Text = "Genre", Width = 100 },
+                        new ColumnHeader { Text = "Free", Width = 100 },
+                    };
+
+            resultsListView.Columns.AddRange(cols);
+            
             //validate search value
             if (searchValueTextBox.TextLength > 0)
             {
                 try
                 {
-                    lendables = (
+                    this.lendables = (
                             from l in LibraryDB.lendables
                             join a in LibraryDB.authors on l.author_id equals a.id
                             join c in LibraryDB.categories on l.category_id equals c.id
                             join g in LibraryDB.genres on l.genre_id equals g.id
+                            join lu in LibraryDB.lendable_users on l.id equals lu.lendable_id into finalGroup
+                            from finalItem in finalGroup.DefaultIfEmpty()
                             where SqlMethods.Like(l.display_name, "%" + searchValueTextBox.Text + "%")
                             select new Lendable
                             {
@@ -108,6 +119,10 @@ namespace LibraryForms
                                     id = g.id,
                                     slug = g.slug,
                                     display_name = g.display_name
+                                },
+                                user = new User
+                                {
+                                    id = finalItem.user_id != null ? finalItem.user_id : 0
                                 }
                             }
                         ).ToList<Lendable>();
@@ -118,19 +133,19 @@ namespace LibraryForms
                     throw;
                 }
 
-                if (lendables != null)
+                if (this.lendables != null)
 	            {
-                    ColumnHeader[] cols = new ColumnHeader[] { 
-                        new ColumnHeader { Text = "Name", Width = 100 },
-                        new ColumnHeader { Text = "Author" },
-                        new ColumnHeader { Text = "Category" }, 
-                        new ColumnHeader { Text = "Genre" }
-                    };
+                    MessageBox.Show(this.lendables[0].display_name);
+                    foreach (var item in this.lendables)
+                    {
+                        ListViewItem i1 = new ListViewItem(item.display_name);
+                        i1.SubItems.Add(item.author.first_name+" "+item.author.last_name);
+                        i1.SubItems.Add(item.category.display_name);
+                        i1.SubItems.Add(item.genre.display_name);
+                        i1.SubItems.Add(item.user.id != 0 ? "NO" : "YES");
 
-                    resultsListView.Columns.AddRange(cols);
-                    
-
-    		 
+                        resultsListView.Items.Add(i1); 
+                    }
 	            }
                        
             }
