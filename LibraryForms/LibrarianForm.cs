@@ -135,7 +135,8 @@ namespace LibraryForms
 
                 if (this.lendables != null)
 	            {
-                    MessageBox.Show(this.lendables[0].display_name);
+                    resultsListView.Items.Clear();
+
                     foreach (var item in this.lendables)
                     {
                         ListViewItem i1 = new ListViewItem(item.display_name);
