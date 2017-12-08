@@ -35,6 +35,7 @@ namespace LibraryForms
             // TODO: This line of code loads data into the 'librarydbDataSet.users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.librarydbDataSet.users);
             this.addColumnsToListView();
+            this.fillUsersListBox();
 
         }
 
@@ -134,7 +135,8 @@ namespace LibraryForms
 
                     foreach (var item in this.lendables)
                     {
-                        ListViewItem i1 = new ListViewItem(item.display_name);
+                        ListViewItem i1 = new ListViewItem(item.id.ToString());
+                        i1.SubItems.Add(item.display_name);
                         i1.SubItems.Add(item.author.first_name+" "+item.author.last_name);
                         i1.SubItems.Add(item.category.display_name);
                         i1.SubItems.Add(item.genre.display_name);
@@ -150,15 +152,44 @@ namespace LibraryForms
 
         private void addColumnsToListView() {
             ColumnHeader[] cols = new ColumnHeader[] { 
-                        new ColumnHeader { Text = "Name", Width = 120 },
-                        new ColumnHeader { Text = "Author",Width = 100 },
-                        new ColumnHeader { Text = "Category", Width = 100 }, 
-                        new ColumnHeader { Text = "Genre", Width = 100 },
-                        new ColumnHeader { Text = "Free", Width = 100 },
-                        new ColumnHeader { Text = "Lended To", Width = 100 },
-                    };
+                new ColumnHeader { Text = "ID" },        
+                new ColumnHeader { Text = "Name", Width = 120 },
+                new ColumnHeader { Text = "Author",Width = 100 },
+                new ColumnHeader { Text = "Category", Width = 100 },
+                new ColumnHeader { Text = "Genre", Width = 100 },
+                new ColumnHeader { Text = "Free", Width = 100 },
+                new ColumnHeader { Text = "Lended To", Width = 100 },
+            };
 
             resultsListView.Columns.AddRange(cols);
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.usersTableAdapter.FillBy(this.librarydbDataSet.users);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillUsersListBox()
+        {
+            usersListBox.DataSource = (
+                from u in LibraryDB.users
+                select new
+                {
+                    value = u.id,
+                    text = u.first_name + " " + u.last_name
+                }
+            ).ToList();
+
+            usersListBox.ValueMember = "value";
+            usersListBox.DisplayMember = "text";
         }
     }
 }
