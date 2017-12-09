@@ -676,6 +676,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 589);
             this.Controls.Add(this.tabControl1);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(784, 627);
+            this.MinimumSize = new System.Drawing.Size(784, 627);
             this.Name = "LibrarianForm";
             this.ShowIcon = false;
             this.Text = "Librarian Dashboard";

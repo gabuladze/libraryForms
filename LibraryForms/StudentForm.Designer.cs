@@ -31,7 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.borrowedItemListView = new System.Windows.Forms.ListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.resultsListView = new System.Windows.Forms.ListView();
+            this.searchLendableButton = new System.Windows.Forms.Button();
+            this.searchValueTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.messageLabel = new System.Windows.Forms.Label();
             this.authorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.librarydbDataSet = new LibraryForms.librarydbDataSet();
@@ -41,23 +49,15 @@
             this.lendablesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.lendablesTableAdapter();
             this.authorsTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.authorsTableAdapter();
             this.categoriesTableAdapter = new LibraryForms.librarydbDataSetTableAdapters.categoriesTableAdapter();
-            this.borrowedItemListView = new System.Windows.Forms.ListView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.resultsListView = new System.Windows.Forms.ListView();
-            this.searchLendableButton = new System.Windows.Forms.Button();
-            this.searchValueTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -82,6 +82,16 @@
             this.tabPage1.Text = "Borrowed Items";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // borrowedItemListView
+            // 
+            this.borrowedItemListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borrowedItemListView.Location = new System.Drawing.Point(3, 3);
+            this.borrowedItemListView.Name = "borrowedItemListView";
+            this.borrowedItemListView.Size = new System.Drawing.Size(778, 550);
+            this.borrowedItemListView.TabIndex = 0;
+            this.borrowedItemListView.UseCompatibleStateImageBehavior = false;
+            this.borrowedItemListView.View = System.Windows.Forms.View.Details;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -98,61 +108,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "All Items";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // messageLabel
-            // 
-            this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(6, 512);
-            this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(0, 13);
-            this.messageLabel.TabIndex = 2;
-            // 
-            // authorsBindingSource
-            // 
-            this.authorsBindingSource.DataMember = "authors";
-            this.authorsBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // librarydbDataSet
-            // 
-            this.librarydbDataSet.DataSetName = "librarydbDataSet";
-            this.librarydbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoriesBindingSource
-            // 
-            this.categoriesBindingSource.DataMember = "categories";
-            this.categoriesBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // categoriesBindingSource1
-            // 
-            this.categoriesBindingSource1.DataMember = "categories";
-            this.categoriesBindingSource1.DataSource = this.librarydbDataSet;
-            // 
-            // lendablesBindingSource
-            // 
-            this.lendablesBindingSource.DataMember = "lendables";
-            this.lendablesBindingSource.DataSource = this.librarydbDataSet;
-            // 
-            // lendablesTableAdapter
-            // 
-            this.lendablesTableAdapter.ClearBeforeFill = true;
-            // 
-            // authorsTableAdapter
-            // 
-            this.authorsTableAdapter.ClearBeforeFill = true;
-            // 
-            // categoriesTableAdapter
-            // 
-            this.categoriesTableAdapter.ClearBeforeFill = true;
-            // 
-            // borrowedItemListView
-            // 
-            this.borrowedItemListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.borrowedItemListView.Location = new System.Drawing.Point(3, 3);
-            this.borrowedItemListView.Name = "borrowedItemListView";
-            this.borrowedItemListView.Size = new System.Drawing.Size(778, 550);
-            this.borrowedItemListView.TabIndex = 0;
-            this.borrowedItemListView.UseCompatibleStateImageBehavior = false;
-            this.borrowedItemListView.View = System.Windows.Forms.View.Details;
             // 
             // groupBox1
             // 
@@ -221,12 +176,61 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "ADVANCED SEARCH";
             // 
+            // messageLabel
+            // 
+            this.messageLabel.AutoSize = true;
+            this.messageLabel.Location = new System.Drawing.Point(6, 512);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(0, 13);
+            this.messageLabel.TabIndex = 2;
+            // 
+            // authorsBindingSource
+            // 
+            this.authorsBindingSource.DataMember = "authors";
+            this.authorsBindingSource.DataSource = this.librarydbDataSet;
+            // 
+            // librarydbDataSet
+            // 
+            this.librarydbDataSet.DataSetName = "librarydbDataSet";
+            this.librarydbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoriesBindingSource
+            // 
+            this.categoriesBindingSource.DataMember = "categories";
+            this.categoriesBindingSource.DataSource = this.librarydbDataSet;
+            // 
+            // categoriesBindingSource1
+            // 
+            this.categoriesBindingSource1.DataMember = "categories";
+            this.categoriesBindingSource1.DataSource = this.librarydbDataSet;
+            // 
+            // lendablesBindingSource
+            // 
+            this.lendablesBindingSource.DataMember = "lendables";
+            this.lendablesBindingSource.DataSource = this.librarydbDataSet;
+            // 
+            // lendablesTableAdapter
+            // 
+            this.lendablesTableAdapter.ClearBeforeFill = true;
+            // 
+            // authorsTableAdapter
+            // 
+            this.authorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // categoriesTableAdapter
+            // 
+            this.categoriesTableAdapter.ClearBeforeFill = true;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 582);
             this.Controls.Add(this.tabControl1);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(808, 620);
+            this.MinimumSize = new System.Drawing.Size(808, 620);
             this.Name = "StudentForm";
             this.ShowIcon = false;
             this.Text = "Student Dashboard";
@@ -235,12 +239,12 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.authorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.librarydbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lendablesBindingSource)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

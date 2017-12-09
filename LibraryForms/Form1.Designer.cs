@@ -111,8 +111,13 @@
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(300, 250);
+            this.MinimumSize = new System.Drawing.Size(300, 250);
             this.Name = "LoginForm";
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "CLMS - Login";
             this.ResumeLayout(false);
             this.PerformLayout();
