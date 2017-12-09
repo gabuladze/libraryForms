@@ -191,5 +191,38 @@ namespace LibraryForms
             usersListBox.ValueMember = "value";
             usersListBox.DisplayMember = "text";
         }
+
+        private void saveLendableUserButton_Click(object sender, EventArgs e)
+        {
+            if (lendableIdTextBox.Text.Length == 0 || usersListBox.SelectedValue == null)
+            {
+                MessageBox.Show("Nope.");
+            }
+            else
+            {
+                var lendable_user = (
+                        from lu in LibraryDB.lendable_users
+                        where Convert.ToInt64(lu.lendable_id) == Convert.ToInt64(lendableIdTextBox.Text)
+                        select new { lendable_id = lu.lendable_id, user_id = lu.user_id }
+                    ).ToList();
+                
+                int SQLCommand;
+                
+                if (lendable_user.Count == 1)
+                {
+
+                    SQLCommand = LibraryDB.ExecuteCommand(
+                        "UPDATE lendable_user SET user_id = {0} where lendable_id = {1}", usersListBox.SelectedValue, lendableIdTextBox.Text);
+                    MessageBox.Show("Done!");
+                }
+                else
+                {
+                    SQLCommand = LibraryDB.ExecuteCommand(
+                        "INSERT INTO lendable_user VALUES ({0},{1})", lendableIdTextBox.Text, usersListBox.SelectedValue
+                    );
+                    MessageBox.Show("Done!");
+                }
+            }
+        }
     }
 }
